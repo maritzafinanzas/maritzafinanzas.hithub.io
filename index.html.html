@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrediMaritza - Impulsa tu Negocio Hoy</title>
+    <meta name="description" content="Créditos rápidos desde $100 para emprendedores de Quito. Aprobación en 24h, pagos flexibles diarios o semanales. Contacta a Maritza ahora.">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:#333;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.1);position:fixed;width:100%;top:0;z-index:1000}
+        nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+        .logo{font-size:1.8rem;font-weight:bold;color:#2c5aa0}
+        .contact-info{display:flex;gap:2rem;font-size:.9rem;color:#666}
+        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:100px}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path d="M0,400 C300,300 600,500 900,350 C1050,250 1150,300 1200,250 L1200,800 L0,800 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center center;background-size:cover}
+        .hero-content{position:relative;z-index:2;text-align:center;color:white}
+        .hero h1{font-size:3.5rem;margin-bottom:1rem;font-weight:700;text-shadow:2px 2px 4px rgba(0,0,0,.3)}
+        .hero p{font-size:1.3rem;margin-bottom:2rem;opacity:.9}
+        .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin:3rem 0}
+        .stat-card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:2rem;border-radius:15px;border:1px solid rgba(255,255,255,.2)}
+        .stat-number{font-size:2.5rem;font-weight:bold;color:#fff}
+        .stat-label{font-size:1rem;opacity:.9}
+        .cta-button{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(45deg,#28a745,#20c997);color:white;padding:18px 40px;border:none;border-radius:50px;font-size:1.2rem;font-weight:bold;text-decoration:none;box-shadow:0 8px 25px rgba(40,167,69,.3);transition:all .3s ease;cursor:pointer}
+        .cta-button:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(40,167,69,.4)}
+        .whatsapp-icon{width:24px;height:24px;fill:currentColor}
+        .features{padding:5rem 0;background:#f8f9fa}
+        .section-title{text-align:center;font-size:2.5rem;margin-bottom:3rem;color:#2c5aa0}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+        .feature-card{background:white;padding:2rem;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.1);text-align:center;transition:transform .3s ease}
+        .feature-card:hover{transform:translateY(-5px)}
+        .feature-icon{width:60px;height:60px;margin:0 auto 1rem;background:linear-gradient(45deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px}
+        .calculator{padding:5rem 0;background:linear-gradient(135deg,#2c5aa0 0%,#667eea 100%);color:white}
+        .calc-container{background:rgba(255,255,255,.15);padding:3rem;border-radius:20px;backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.3);max-width:600px;margin:0 auto;box-shadow:0 20px 40px rgba(0,0,0,.2)}
+        .calc-input{width:100%;padding:1rem;border:2px solid rgba(255,255,255,.3);border-radius:10px;font-size:1.1rem;margin:1rem 0;background:rgba(255,255,255,.2);color:white;transition:all .3s ease;backdrop-filter:blur(10px)}
+        .calc-input:focus{outline:none;border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.3)}
+        .calc-input::placeholder{color:rgba(255,255,255,.7)}
+        .calc-result{background:rgba(255,255,255,.2);backdrop-filter:blur(10px);color:white;padding:2rem;border-radius:15px;margin-top:2rem;text-align:center;border:1px solid rgba(255,255,255,.3)}
+        .calc-result h3{font-size:1.5rem;margin-bottom:1rem;color:white}
+        .calc-highlight{font-size:2.5rem;font-weight:bold;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+        .testimonials{padding:6rem 0;background:linear-gradient(135deg,#1e3a8a 0%,#3730a3 50%,#581c87 100%);position:relative;overflow:hidden}
+        .testimonials::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" /></radialGradient></defs><circle cx="150" cy="150" r="100" fill="url(%23grad1)"/><circle cx="850" cy="300" r="150" fill="url(%23grad1)"/><circle cx="200" cy="800" r="120" fill="url(%23grad1)"/></svg>') no-repeat center center;background-size:cover;opacity:.3}
+        .testimonials .container{position:relative;z-index:2}
+        .testimonials .section-title{color:white;font-size:3rem;margin-bottom:1rem}
+        .testimonials-subtitle{text-align:center;font-size:1.2rem;color:rgba(255,255,255,.85);margin-bottom:4rem;font-weight:300}
+        .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin-top:3rem}
+        .testimonial{background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.08));backdrop-filter:blur(20px);padding:2.5rem;border-radius:20px;border:1px solid rgba(255,255,255,.15);transition:all .4s ease;position:relative;overflow:hidden}
+        .testimonial::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#fbbf24,#f59e0b,#d97706);border-radius:20px 20px 0 0}
+        .testimonial:hover{transform:translateY(-8px) scale(1.02);background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.12));box-shadow:0 25px 50px rgba(0,0,0,.3)}
+        .quote-icon{position:absolute;top:15px;right:20px;font-size:4rem;color:rgba(255,255,255,.1);font-family:Georgia,serif}
+        .stars{margin-bottom:1.5rem;font-size:1.3rem}
+        .star{color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,.5);margin-right:3px}
+        .testimonial-text{font-style:italic;margin-bottom:2rem;color:rgba(255,255,255,.95);font-size:1.1rem;line-height:1.7;font-weight:400}
+        .testimonial-author{display:flex;align-items:center;gap:1.5rem}
+        .testimonial-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:1.4rem;box-shadow:0 8px 20px rgba(251,191,36,.3);border:3px solid rgba(255,255,255,.2)}
+        .testimonial-info h4{color:white;margin-bottom:.5rem;font-weight:600;font-size:1.1rem}
+        .testimonial-info p{color:rgba(255,255,255,.75);font-size:.95rem;font-weight:400}
+        .business-icon{display:inline-block;margin-right:.5rem;font-size:1rem}
+        .process{padding:5rem 0;background:white}
+        .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem}
+        .step{text-align:center}
+        .step-number{width:60px;height:60px;background:linear-gradient(45deg,#2c5aa0,#667eea);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:bold;margin:0 auto 1rem}
+        .requirements{padding:5rem 0;background:#f8f9fa}
+        .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:3rem}
+        .req-item{background:white;padding:2rem;border-radius:15px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.1)}
+        .req-icon{font-size:3rem;margin-bottom:1rem}
+        .contact{padding:5rem 0;background:linear-gradient(135deg,#2c5aa0 0%,#667eea 100%);color:white;text-align:center}
+        .contact-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0}
+        .contact-item{background:rgba(255,255,255,.1);padding:2rem;border-radius:15px;backdrop-filter:blur(10px)}
+        footer{background:#1a1a1a;color:white;text-align:center;padding:2rem 0}
+        .trust-badge{display:inline-block;background:rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:25px;margin:.5rem;font-size:.9rem}
+        .fade-in-up{animation:fadeInUp .8s ease-out}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @media (max-width:768px){
+            .hero{padding-top:120px;min-height:90vh}
+            .hero h1{font-size:2.2rem;line-height:1.2;margin-bottom:1.5rem}
+            .hero p{font-size:1rem;line-height:1.4}
+            .contact-info{flex-direction:column;gap:.5rem;text-align:center;font-size:.8rem}
+            .hero-stats{grid-template-columns:1fr;margin:2rem 0}
+            .trust-badge{font-size:.8rem;padding:.4rem .8rem;margin:.3rem;display:inline-block}
+            .calc-container{padding:2rem;margin:0 1rem}
+            .calc-input{font-size:1rem}
+            .calc-highlight{font-size:1.5rem}
+            .testimonials-grid{grid-template-columns:1fr;gap:2rem}
+            .testimonials .section-title{font-size:2.5rem}
+            .testimonials-subtitle{font-size:1.1rem}
+            .testimonial{padding:2rem}
+            .testimonial-avatar{width:60px;height:60px;font-size:1.2rem}
+        }
+        @media (max-width:480px){
+            .hero{padding-top:140px}
+            .hero h1{font-size:2rem;line-height:1.1}
+            .hero p{font-size:.95rem}
+            .contact-info{font-size:.7rem}
+            .testimonials{padding:4rem 0}
+            .testimonial{padding:1.5rem}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">CrediMaritza</div>
+            <div class="contact-info">
+                <span>📧 maritzafinanzas.ec@gmail.com</span>
+                <span>📍 Quito, Ecuador</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1>¡Impulsa tu Negocio HOY!</h1>
+                <p>No dejes que la falta de capital limite tu crecimiento.<br>
+                Créditos rápidos y flexibles para emprendedores de Quito.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">$100+</div>
+                        <div class="stat-label">Desde solo</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Aprobación rápida</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20%</div>
+                        <div class="stat-label">Tasa competitiva</div>
+                    </div>
+                </div>
+
+                <div style="margin:2rem 0">
+                    <span class="trust-badge">✅ Atención Directa</span>
+                    <span class="trust-badge">🏆 Especialista en Microcréditos</span>
+                    <span class="trust-badge">⚡ Proceso 100% Digital</span>
+                </div>
+
+                <a href="https://wa.me/5930963888882?text=Hola%20Maritza,%20estoy%20interesado%20en%20obtener%20un%20crédito%20para%20mi%20negocio.%20¿Podrías%20ayudarme?" 
+                   class="cta-button" target="_blank">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    Hablar con Maritza - Asesora Especializada
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir CrediMaritza?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Aprobación Inmediata</h3>
+                    <p>Evaluamos tu solicitud en menos de 24 horas. Sin largas esperas ni trámites burocráticos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Montos Flexibles</h3>
+                    <p>Desde $100 hasta montos mayores. Crece con nosotros según tu capacidad de pago.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Asesoría Personalizada</h3>
+                    <p>Maritza, nuestra especialista, te acompaña en todo el proceso para encontrar la mejor solución.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Modalidad de Pago Flexible</h3>
+                    <p>Pagos diarios cómodos en solo 24 días o modalidad semanal. Tú eliges la opción que mejor se adapte a tu flujo de caja.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h3>Para Todo Tipo de Negocio</h3>
+                    <p>Microempresas, emprendimientos, comercios. Apoyo para tu crecimiento empresarial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator">
+        <div class="container">
+            <h2 class="section-title" style="color:white">Calcula tu Cuota Diaria</h2>
+            <p style="text-align:center;font-size:1.1rem;margin-bottom:2rem;color:rgba(255,255,255,.9);font-weight:400">
+                Descubre cuánto pagarías diariamente por tu crédito
+            </p>
+            <div class="calc-container">
+                <label for="amount" style="display:block;margin-bottom:.5rem;font-weight:700;color:white;font-size:1.1rem">¿Cuánto necesitas?</label>
+                <input type="number" id="amount" class="calc-input" placeholder="Ingresa el monto (ej: 500)" min="100" max="5000">
+                
+                <div class="calc-result" id="result" style="display:none">
+                    <h3>Tu plan de pago sería:</h3>
+                    <div class="calc-highlight" id="dailyAmount">$0</div>
+                    <p style="color:white">por día durante <strong>24 días</strong></p>
+                    <p style="margin-top:1rem;color:rgba(255,255,255,.9)">Tasa: 20% | Total a pagar: <span id="totalAmount">$0</span></p>
+                    <div style="margin-top:2rem">
+                        <a href="https://wa.me/5930963888882?text=Hola%20Maritza,%20me%20interesa%20un%20crédito%20de%20$" 
+                           class="cta-button" target="_blank" id="whatsappCalc">
+                            <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            Solicitar este Monto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+            <p class="testimonials-subtitle">
+                Más de 1000 emprendedores han transformado sus negocios con CrediMaritza
+            </p>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Necesitaba capital urgente para mi tienda de ropa. Maritza me aprobó $800 en menos de 24 horas. Los pagos diarios se adaptaron perfecto a mi flujo de ventas. Ya voy por mi tercer crédito."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>María Rodríguez</h4>
+                            <p><span class="business-icon">👗</span>Boutique "Estilo" - La Mariscal</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Mi negocio de comida estaba en crisis. Con $600 de CrediMaritza pude comprar una freidora nueva y ingredientes. Ahora mis ventas aumentaron 60%. El proceso fue súper fácil y transparente."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CA</div>
+                        <div class="testimonial-info">
+                            <h4>Carlos Andrade</h4>
+                            <p><span class="business-icon">🍽️</span>Restaurante "Sabor Criollo" - Centro Histórico</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Soy nueva emprendedora y necesitaba $300 para stock de productos de belleza. Maritza me explicó todo claramente, sin letra pequeña. Cumplí todos mis pagos y ahora tengo acceso a montos mayores."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LM</div>
+                        <div class="testimonial-info">
+                            <h4>Lucía Morales</h4>
+                            <p><span class="business-icon">💄</span>Emprendedora "Beauty Touch" - La Carolina</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">
+                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Tengo un taller mecánico y necesitaba herramientas urgentes. $1200 en mi cuenta en 2 días. Los pagos diarios no afectan mi flujo porque cobro diario. Excelente servicio y atención personalizada."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JV</div>
+                        <div class="testimonial-info">
+                            <h4>Jorge Vásquez</h4>
+                            <p><span class="business-icon">🔧</span>Taller "AutoFix" - Quitumbe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Proceso Simple en 4 Pasos</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Contacta por WhatsApp</h3>
+                    <p>Envía un mensaje a Maritza con tu consulta. Respuesta inmediata y asesoría personalizada.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Envía tus Documentos</h3>
+                    <p>Sube tus documentos requeridos de forma digital. Proceso 100% seguro y confiable.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Evaluación Express</h3>
+                    <p>Analizamos tu solicitud en menos de 24 horas. Te comunicamos la decisión al instante.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Recibe tu Crédito</h3>
+                    <p>Una vez aprobado, recibes el dinero directamente en tu cuenta. ¡Así de fácil!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="requirements">
+        <div class="container">
+            <h2 class="section-title">Documentos Requeridos</h2>
+            <p style="text-align:center;font-size:1.1rem;margin-bottom:2rem">
+                Solo necesitas estos 3 documentos básicos para aplicar:
+            </p>
+            <div class="req-grid">
+                <div class="req-item">
+                    <div class="req-icon">🆔</div>
+                    <h3>Cédula de Identidad</h3>
+                    <p>Foto clara de tu cédula ecuatoriana por ambos lados</p>
+                </div>
+                <div class="req-item">
+                    <div class="req-icon">🏢</div>
+                    <h3>RUC del Negocio</h3>
+                    <p>Registro Único de Contribuyente vigente de tu empresa</p>
+                </div>
+                <div class="req-item">
+                    <div class="req-icon">⚡</div>
+                    <h3>Recibo de Luz</h3>
+                    <p>Planilla de energía eléctrica del domicilio (último mes)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color:white">¿Listo para Impulsar tu Negocio?</h2>
+            <p style="font-size:1.2rem;margin-bottom:2rem">
+                Maritza, nuestra asesora especializada, está esperando tu mensaje.<br>
+                Más de 1000 emprendedores de Ecuador ya confiaron en nosotros.
+            </p>
+            
+            <a href="https://wa.me/5930963888882?text=Hola%20Maritza,%20estoy%20interesado%20en%20obtener%20un%20crédito%20para%20mi%20negocio.%20¿Podrías%20ayudarme?" 
+               class="cta-button" target="_blank" style="margin-bottom:3rem">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+                Obtener mi Crédito Ahora
+            </a>
+
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>maritzafinanzas.ec@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🌐 Sitio Web</h3>
+                    <p>www.credimaritza.online</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Ubicación</h3>
+                    <p>Av. Amazonas N36-152 y Naciones Unidas<br>
+                    Sector La Carolina, Quito, Ecuador</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CrediMaritza. Todos los derechos reservados. | www.credimaritza.online</p>
+            <p style="margin-top:1rem;font-size:.9rem;opacity:.8">
+                Maritza - Asesora especializada en microcréditos para emprendedores
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const o=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.style.opacity='1',t.target.style.transform='translateY(0)')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+        document.querySelectorAll('.feature-card,.step,.req-item,.testimonial').forEach(e=>{e.style.opacity='0',e.style.transform='translateY(20px)',e.style.transition='opacity 0.6s ease, transform 0.6s ease',o.observe(e)});
+        window.addEventListener('scroll',()=>{const e=document.querySelector('header');e.style.background=window.scrollY>100?'rgba(255,255,255,0.98)':'rgba(255,255,255,0.95)'});
+        
+        // Calculadora
+        const amountInput=document.getElementById('amount');
+        const result=document.getElementById('result');
+        const dailyAmount=document.getElementById('dailyAmount');
+        const totalAmount=document.getElementById('totalAmount');
+        const whatsappCalc=document.getElementById('whatsappCalc');
+        
+        amountInput.addEventListener('input',function(){
+            const amount=parseFloat(this.value);
+            if(amount>=100&&amount<=5000){
+                const total=amount*1.2;
+                const daily=total/24;
+                dailyAmount.textContent=`${daily.toFixed(2)}`;
+                totalAmount.textContent=`${total.toFixed(2)}`;
+                whatsappCalc.href=`https://wa.me/593XXXXXXXXX?text=Hola%20Maritza,%20me%20interesa%20un%20crédito%20de%20${amount}.%20Vi%20que%20pagaría%20${daily.toFixed(2)}%20diarios.%20¿Podrías%20ayudarme?`;
+                result.style.display='block';
+            }else{
+                result.style.display='none';
+            }
+        });
+    </script>
+</body>
+</html>
